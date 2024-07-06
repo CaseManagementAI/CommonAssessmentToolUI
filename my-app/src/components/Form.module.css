@@ -1,0 +1,21 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+.form {
+  width: 60%;
+  max-width: 800px;
+}
+
+.formTitle {
+  text-align: center;
+
+}
+
+.submitButton {
+  margin-top: 20px !important;
+}

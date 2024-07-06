@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.centered-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  background-color: #f4f4f9; /* 一个柔和的背景颜色 */
+  color: #333; /* 文字颜色 */
+  font-family: 'Arial', sans-serif; /* 字体 */
 }
 
-.App-link {
-  color: #61dafb;
+.form-container {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  width: 80%; /* 表单宽度 */
+  max-width: 500px; /* 最大宽度 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.result-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: #e2e2e2; /* 结果背景颜色 */
+  border-radius: 8px;
+  width: 80%; /* 结果宽度 */
+  max-width: 500px; /* 最大宽度 */
+}
+
+.error-message {
+  color: red; 
 }
