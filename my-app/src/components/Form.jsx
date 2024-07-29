@@ -45,19 +45,6 @@ function Form() {
     substanceUseDisorder: "",
   });
 
-  useEffect(() => {
-    // Load form data from localStorage when component mounts
-    const savedFormData = localStorage.getItem("formData");
-    if (savedFormData) {
-      setFormData(JSON.parse(savedFormData));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save form data to localStorage whenever it changes
-    localStorage.setItem("formData", JSON.stringify(formData));
-  }, [formData]);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -501,10 +488,33 @@ function Form() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item>
-            <Button type="submit" variant="contained" color="primary">
-              Submit
-            </Button>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="flex-end"
+            style={{ marginTop: "20px" }}
+          >
+            <Grid item xs={12} sm={3}>
+              <Button
+                type="button"
+                variant="outlined"
+                color="secondary"
+                onClick={handleClearForm}
+                fullWidth
+              >
+                Clear Form
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                Submit
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </form>
