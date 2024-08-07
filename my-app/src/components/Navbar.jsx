@@ -11,12 +11,12 @@ const Navbar = () => {
       </div>
       <ul className="navbar-nav">
         {/* Nav Items */}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link to="/about">About</Link>
         </li>
         <li className="nav-item">
           <Link to="/predictions">Predictions</Link>
-        </li>
+        </li> */}
 
         {/* search form */}
         <form className="nav-search">
