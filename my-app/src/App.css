@@ -4,9 +4,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f4f4f9; /* 一个柔和的背景颜色 */
-  color: #333; /* 文字颜色 */
-  font-family: 'Arial', sans-serif; /* 字体 */
+  background-color: #f4f4f9; 
+  color: #333; 
+  font-family: 'Arial', sans-serif; 
 }
 
 .form-container {
@@ -14,17 +14,17 @@
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  width: 80%; /* 表单宽度 */
-  max-width: 500px; /* 最大宽度 */
+  width: 80%; 
+  max-width: 500px;
 }
 
 .result-container {
   margin-top: 20px;
   padding: 20px;
-  background: #e2e2e2; /* 结果背景颜色 */
+  background: #e2e2e2; 
   border-radius: 8px;
-  width: 80%; /* 结果宽度 */
-  max-width: 500px; /* 最大宽度 */
+  width: 80%; 
+  max-width: 500px; 
 }
 
 .error-message {

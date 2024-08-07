@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Case Management Tool</h3>
           <p>
-            This tool is a cloud-based web application that helps caseworkers
-            manage client cases and provide personalized support through an
-            intuitive user interface.
+            A cloud-based web application that helps caseworkers manage client
+            cases and provide personalized support through an intuitive user
+            interface.
           </p>
         </div>
         <div className="footer-section">
@@ -20,10 +20,13 @@ const Footer = () => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/services">About</a>
+              <a href="/about">About</a>
             </li>
             <li>
               <a href="/contact">Contact</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
             </li>
           </ul>
         </div>
@@ -62,7 +65,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; Beam Group Inc.</p>
+        <p>&copy; 2024 Beam Group Inc. All rights reserved.</p>
       </div>
     </footer>
   );
