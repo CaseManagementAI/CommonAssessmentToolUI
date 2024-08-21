@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Form from "./components/Form";
+// import Form from "./components/Form";
 import Form_new from "./components/Form_new";
-import Recommendations from "./components/Recommendations";
-import ReturnToWork from "./components/ReturnToWork";
+// import Recommendations from "./components/Recommendations";
+// import ReturnToWork from "./components/ReturnToWork";
 import ResultPage from "./components/ResultPage";
 import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";

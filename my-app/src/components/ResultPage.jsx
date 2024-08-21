@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Typography,
   Button,
@@ -9,7 +10,6 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const ResultPage = () => {
   const location = useLocation();
@@ -41,7 +41,7 @@ const ResultPage = () => {
             Probability of Return to Work:
           </Typography>
           <Typography variant="h4" color="primary" sx={{ fontWeight: "bold" }}>
-            {probability.toFixed(2)}%
+            {(probability * 100).toFixed(2)}%
           </Typography>
         </Box>
 
@@ -83,7 +83,11 @@ const ResultPage = () => {
             </Button>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Button variant="outlined" onClick={() => navigate("/")} fullWidth>
+            <Button
+              variant="outlined"
+              onClick={() => navigate("/form")}
+              fullWidth
+            >
               Back to Form
             </Button>
           </Grid>

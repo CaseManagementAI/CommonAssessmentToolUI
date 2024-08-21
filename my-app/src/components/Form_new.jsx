@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import backgroundImage from "../img/bg1.jpg";
 import {
   Typography,
   Grid,
@@ -15,6 +17,7 @@ import {
 import styles from "./Form.module.css";
 
 const Form_new = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     age: "",
     gender: "",
@@ -33,7 +36,7 @@ const Form_new = () => {
     transportation_bool: "false",
     caregiver_bool: "false",
     housing: "",
-    income_source: 0,
+    income_source: "",
     felony_bool: "false",
     attending_school: "false",
     currently_employed: "false",
@@ -51,10 +54,26 @@ const Form_new = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Here to send the formData to FastAPI backend
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/form-submissions", // try backend git, clone and run fastapi server and get endpoint
+        // check form format to make sure all the data are matching fastapi
+        formData
+      );
+      // test API response
+      const probability = Math.random(); // test it with a server sending back a dictionary, handle happy/bad cases
+      const interventions = [
+        "Intervention 1",
+        "Intervention 2",
+        "Intervention 3",
+      ];
+      navigate("/results", { state: { probability, interventions } });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error (e.g., show an error message to the user)
+    }
   };
 
   const handleClearForm = () => {
@@ -80,7 +99,7 @@ const Form_new = () => {
       felony_bool: "false",
       attending_school: "false",
       currently_employed: "false",
-      substance_use: "",
+      substance_use: "false",
       time_unemployed: 0,
       need_mental_health_support_bool: "false",
       interventions: [],
@@ -335,15 +354,39 @@ const Form_new = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Income Source (0-5)"
-              name="income_source"
-              type="number"
-              value={formData.income_source}
-              onChange={handleChange}
-              InputProps={{ inputProps: { min: 0, max: 5 } }}
-            />
+            <FormControl fullWidth>
+              <InputLabel>Source of Income</InputLabel>
+              <Select
+                name="income_source"
+                label="Source of Income"
+                value={formData.income_source}
+                onChange={handleChange}
+              >
+                <MenuItem value="No Source of Income">
+                  No Source of Income
+                </MenuItem>
+                <MenuItem value="Employment Insurance">
+                  Employment Insurance
+                </MenuItem>
+                <MenuItem value="Ontario Works applied or receiving">
+                  Ontario Works applied or receiving
+                </MenuItem>
+                <MenuItem value="Ontario Disability Support Program applied or receiving">
+                  Ontario Disability Support Program applied or receiving
+                </MenuItem>
+                <MenuItem value="Dependent of someone receiving OW or ODSP">
+                  Dependent of someone receiving OW or ODSP
+                </MenuItem>
+                <MenuItem value="Crown Ward">Crown Ward</MenuItem>
+                <MenuItem value="Employment">Employment</MenuItem>
+                <MenuItem value="Band-owned home">Band-owned home</MenuItem>
+                <MenuItem value="Homeless or transient">
+                  Homeless or transient
+                </MenuItem>
+                <MenuItem value="Self-Employment">Self-Employment</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControlLabel
@@ -357,22 +400,17 @@ const Form_new = () => {
               label="Has Felony"
             />
           </Grid>
-
           <Grid item xs={12} sm={6}>
-            <FormControl fullWidth>
-              <InputLabel>Substance Use</InputLabel>
-              <Select
-                name="substance_use"
-                label="substance_use"
-                value={formData.substance_use}
-                onChange={handleChange}
-              >
-                <MenuItem value="none">None</MenuItem>
-                <MenuItem value="mild">Mild</MenuItem>
-                <MenuItem value="moderate">Moderate</MenuItem>
-                <MenuItem value="severe">Severe</MenuItem>
-              </Select>
-            </FormControl>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formData.substance_use === "true"}
+                  onChange={handleChange}
+                  name="substance_use_bool"
+                />
+              }
+              label="Substance Use"
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControlLabel

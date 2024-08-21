@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Box, Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../img/bg1.jpg";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -24,46 +25,77 @@ function LandingPage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f7f7f7",
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      <Typography
-        variant="h2"
-        component="h1"
-        gutterBottom
-        textAlign="center"
-        sx={{ mb: 4 }}
+      <Box
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          padding: "2rem",
+          borderRadius: "10px",
+          textAlign: "center",
+        }}
       >
-        Intervention Predictor
-      </Typography>
-      <Typography
-        variant="h5"
-        component="h2"
-        gutterBottom
-        textAlign="center"
-        sx={{ mb: 6 }}
-      >
-        Know more about the candidate's employment potential and intervention
-        recommendations
-      </Typography>
-      <Stack direction="row" spacing={4}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          onClick={handleNewEntry}
+        <Typography
+          variant="h2"
+          component="h1"
+          gutterBottom
+          sx={{
+            mb: 3,
+            fontFamily: "'Open Sans', sans-serif",
+            fontWeight: 500,
+            color: "#2c3e50",
+          }}
         >
-          New Entry
-        </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="large"
-          onClick={handleFileUpload}
+          Intervention Recommendations
+        </Typography>
+        <Typography
+          variant="h5"
+          component="h2"
+          gutterBottom
+          sx={{
+            mb: 6,
+            fontFamily: "'Open Sans', sans-serif",
+            fontWeight: 400,
+            color: "#34495e",
+          }}
         >
-          Upload PDF/CSV
-        </Button>
-      </Stack>
+          Learn more about the candidate's employment potential and intervention
+          recommendations
+        </Typography>
+        <Stack direction="row" spacing={4} justifyContent="center">
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleNewEntry}
+            sx={{
+              backgroundColor: "#3498db",
+              "&:hover": {
+                backgroundColor: "#2980b9",
+              },
+            }}
+          >
+            New Entry
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            onClick={handleFileUpload}
+            sx={{
+              borderColor: "#3498db",
+              color: "#3498db",
+              "&:hover": {
+                borderColor: "#2980b9",
+                color: "#2980b9",
+              },
+            }}
+          >
+            Upload PDF/CSV
+          </Button>
+        </Stack>
+      </Box>
     </Box>
   );
 }
