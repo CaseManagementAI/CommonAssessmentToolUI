@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import backgroundImage from "../img/bg1.jpg";
 import {
   Typography,
   Grid,
@@ -18,6 +17,7 @@ import styles from "./Form.module.css";
 
 const Form_new = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     age: "",
     gender: "",
@@ -40,11 +40,18 @@ const Form_new = () => {
     felony_bool: "false",
     attending_school: "false",
     currently_employed: "false",
-    substance_use: "",
+    substance_use_bool: "false",
     time_unemployed: 0,
     need_mental_health_support_bool: "false",
     interventions: [],
   });
+
+  useEffect(() => {
+    // If there's form data in the location state, use it to initialize the form
+    if (location.state && location.state.formData) {
+      setFormData(location.state.formData);
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -58,23 +65,39 @@ const Form_new = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/form-submissions", // try backend git, clone and run fastapi server and get endpoint
-        // check form format to make sure all the data are matching fastapi
+        "http://localhost:3001/form-submissions",
         formData
       );
-      // test API response
-      const probability = Math.random(); // test it with a server sending back a dictionary, handle happy/bad cases
+      const probability = Math.random();
       const interventions = [
         "Intervention 1",
         "Intervention 2",
         "Intervention 3",
       ];
-      navigate("/results", { state: { probability, interventions } });
+      navigate("/results", { state: { formData, probability, interventions } });
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle error (e.g., show an error message to the user)
     }
   };
+  //todo: use the code below when getting api response from FastAPI(backend)
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "http://your-api-endpoint.com/submit-form", // Replace with your actual API endpoint
+  //       formData
+  //     );
+
+  //     // Assuming the API returns data in this format:
+  //     // { probability: 0.75, interventions: ["Intervention 1", "Intervention 2"] }
+  //     const { probability, interventions } = response.data;
+
+  //     navigate("/results", { state: { formData, probability, interventions } });
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //     // Handle error (e.g., show an error message to the user)
+  //   }
+  // };
 
   const handleClearForm = () => {
     setFormData({
@@ -99,12 +122,11 @@ const Form_new = () => {
       felony_bool: "false",
       attending_school: "false",
       currently_employed: "false",
-      substance_use: "false",
+      substance_use_bool: "false",
       time_unemployed: 0,
       need_mental_health_support_bool: "false",
       interventions: [],
     });
-    localStorage.removeItem("formData");
   };
 
   return (
@@ -404,7 +426,7 @@ const Form_new = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={formData.substance_use === "true"}
+                  checked={formData.substance_use_bool === "true"}
                   onChange={handleChange}
                   name="substance_use_bool"
                 />
