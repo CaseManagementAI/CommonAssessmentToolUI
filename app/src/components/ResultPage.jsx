@@ -10,7 +10,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import { handleSaveReport } from "./Report_generate";
+import { handleSaveReport } from "./ReportGenerate";
 
 const ResultPage = () => {
   const location = useLocation();

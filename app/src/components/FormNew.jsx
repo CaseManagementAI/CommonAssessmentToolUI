@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import styles from "./Form.module.css";
 
-const Form_new = () => {
+const FormNew = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
@@ -43,7 +43,6 @@ const Form_new = () => {
     substance_use_bool: "false",
     time_unemployed: 0,
     need_mental_health_support_bool: "false",
-    // interventions: [],
   });
 
   useEffect(() => {
@@ -531,4 +530,4 @@ const Form_new = () => {
   );
 };
 
-export default Form_new;
+export default FormNew;
