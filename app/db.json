@@ -215,33 +215,6 @@
       "substance_use_bool": "false",
       "time_unemployed": 0,
       "need_mental_health_support_bool": "false"
-    },
-    {
-      "id": "78eb",
-      "age": "18",
-      "gender": "",
-      "work_experience": 0,
-      "canada_workex": 0,
-      "dep_num": 0,
-      "canada_born": "false",
-      "citizen_status": "",
-      "level_of_schooling": "",
-      "fluent_english": "false",
-      "reading_english_scale": 0,
-      "speaking_english_scale": 0,
-      "writing_english_scale": 0,
-      "numeracy_scale": 0,
-      "computer_scale": 0,
-      "transportation_bool": "false",
-      "caregiver_bool": "false",
-      "housing": "",
-      "income_source": "",
-      "felony_bool": "false",
-      "attending_school": "false",
-      "currently_employed": "false",
-      "substance_use_bool": "false",
-      "time_unemployed": 0,
-      "need_mental_health_support_bool": "false"
     }
   ]
 }
