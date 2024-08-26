@@ -19,7 +19,7 @@ const Form_new = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
-    age: "",
+    age: 0,
     gender: "",
     work_experience: 0,
     canada_workex: 0,
@@ -43,7 +43,7 @@ const Form_new = () => {
     substance_use_bool: "false",
     time_unemployed: 0,
     need_mental_health_support_bool: "false",
-    interventions: [],
+    // interventions: [],
   });
 
   useEffect(() => {
@@ -101,7 +101,7 @@ const Form_new = () => {
 
   const handleClearForm = () => {
     setFormData({
-      age: "",
+      age: 0,
       gender: "",
       work_experience: 0,
       canada_workex: 0,
@@ -122,10 +122,9 @@ const Form_new = () => {
       felony_bool: "false",
       attending_school: "false",
       currently_employed: "false",
-      substance_use_bool: "false",
+      substance_use: "false",
       time_unemployed: 0,
       need_mental_health_support_bool: "false",
-      interventions: [],
     });
   };
 
@@ -150,7 +149,7 @@ const Form_new = () => {
               onChange={handleChange}
               variant="outlined"
               fullWidth
-              // InputProps={{ inputProps: { min: 18, max: 65 } }}
+              InputProps={{ inputProps: { min: 18, max: 65 } }}
             />
           </Grid>
           <Grid item xs={12} sm={3}>

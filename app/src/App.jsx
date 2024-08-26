@@ -8,7 +8,7 @@ import Form_new from "./components/Form_new";
 import ResultPage from "./components/ResultPage";
 import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";
-import axios from "axios";
+// import axios from "axios";
 import "./App.css";
 
 function App() {
