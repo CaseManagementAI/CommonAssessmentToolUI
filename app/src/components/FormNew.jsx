@@ -40,7 +40,7 @@ const FormNew = () => {
     felony_bool: "false",
     attending_school: "false",
     currently_employed: "false",
-    substance_use_bool: "false",
+    substance_use: "true",
     time_unemployed: 0,
     need_mental_health_support_bool: "false",
   });
@@ -64,15 +64,14 @@ const FormNew = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/form-submissions",
+        "http://localhost:8000/clients/predictions",
         formData
       );
-      const probability = Math.random();
-      const interventions = [
-        "Intervention 1",
-        "Intervention 2",
-        "Intervention 3",
-      ];
+      console.log(response);
+      console.log(response.data);
+
+      const probability = response.data.baseline
+      const interventions = response.data.interventions;
       navigate("/results", { state: { formData, probability, interventions } });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -424,9 +423,9 @@ const FormNew = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={formData.substance_use_bool === "true"}
+                  checked={formData.substance_use === "true"}
                   onChange={handleChange}
-                  name="substance_use_bool"
+                  name="substance_use"
                 />
               }
               label="Substance Use"
