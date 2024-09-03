@@ -40,7 +40,7 @@ const FormNew = () => {
     felony_bool: "false",
     attending_school: "false",
     currently_employed: "false",
-    substance_use: "true",
+    substance_use: "false",
     time_unemployed: 0,
     need_mental_health_support_bool: "false",
   });
@@ -70,7 +70,8 @@ const FormNew = () => {
       console.log(response);
       console.log(response.data);
 
-      const probability = response.data.baseline
+      const probability = response.data.baseline;
+
       const interventions = response.data.interventions;
       navigate("/results", { state: { formData, probability, interventions } });
     } catch (error) {

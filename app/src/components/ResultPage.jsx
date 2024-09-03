@@ -41,7 +41,7 @@ const ResultPage = () => {
             Probability of Return to Work:
           </Typography>
           <Typography variant="h4" color="primary" sx={{ fontWeight: "bold" }}>
-            {(probability * 100).toFixed(2)}%
+            {(probability).toFixed(2)}%
           </Typography>
         </Box>
 
@@ -49,6 +49,7 @@ const ResultPage = () => {
           <Typography variant="h5" gutterBottom>
             Recommended Interventions:
           </Typography>
+          /* TODO: Fix how list of interventions are displayed */
           <List>
             {interventions.map((intervention, index) => (
               <ListItem key={index}>
