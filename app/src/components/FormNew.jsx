@@ -64,7 +64,10 @@ const FormNew = () => {
     e.preventDefault();
     try {
       // TODO: change url to use an env variable to make it easier to change when deploying in different environments
-      const response = await axios.post("http://ec2-34-219-155-200.us-west-2.compute.amazonaws.com:8000/clients/predictions", formData);
+      const response = await axios.post(
+        "http://ec2-34-219-155-200.us-west-2.compute.amazonaws.com:8000/clients/predictions",
+        formData
+      );
       console.log(response);
       console.log(response.data);
 
@@ -76,25 +79,6 @@ const FormNew = () => {
       console.error("Error submitting form:", error);
     }
   };
-  //todo: use the code below when getting api response from FastAPI(backend)
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "http://your-api-endpoint.com/submit-form", // Replace with your actual API endpoint
-  //       formData
-  //     );
-
-  //     // Assuming the API returns data in this format:
-  //     // { probability: 0.75, interventions: ["Intervention 1", "Intervention 2"] }
-  //     const { probability, interventions } = response.data;
-
-  //     navigate("/results", { state: { formData, probability, interventions } });
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //     // Handle error (e.g., show an error message to the user)
-  //   }
-  // };
 
   const handleClearForm = () => {
     setFormData({

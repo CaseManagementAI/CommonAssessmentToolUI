@@ -29,6 +29,20 @@ const ResultPage = () => {
     navigate("/form", { state: { formData } });
   };
 
+  const formatIntervention = (intervention) => {
+    if (Array.isArray(intervention) && intervention.length === 2) {
+      const percentage = intervention[0];
+      const types = intervention[1];
+      if (Array.isArray(types)) {
+        return {
+          types: types.join(", "),
+          percentage: `${percentage.toFixed(1)}%`,
+        };
+      }
+    }
+    return { types: "Invalid data", percentage: "" };
+  };
+
   return (
     <Box sx={{ p: 4, maxWidth: 800, margin: "0 auto" }}>
       <Paper elevation={3} sx={{ p: 4 }}>
@@ -41,7 +55,7 @@ const ResultPage = () => {
             Probability of Return to Work:
           </Typography>
           <Typography variant="h4" color="primary" sx={{ fontWeight: "bold" }}>
-            {(probability).toFixed(2)}%
+            {probability.toFixed(2)}%
           </Typography>
         </Box>
 
@@ -49,16 +63,28 @@ const ResultPage = () => {
           <Typography variant="h5" gutterBottom>
             Recommended Interventions:
           </Typography>
-          /* TODO: Fix how list of interventions are displayed */
           <List>
-            {interventions.map((intervention, index) => (
-              <ListItem key={index}>
-                <ListItemText
-                  primary={intervention}
-                  primaryTypographyProps={{ variant: "body1" }}
-                />
-              </ListItem>
-            ))}
+            {interventions.map((intervention, index) => {
+              const formatted = formatIntervention(intervention);
+              return (
+                <ListItem key={index}>
+                  <ListItemText
+                    primaryTypographyProps={{ variant: "body1" }}
+                    primary={
+                      <>
+                        {formatted.types}:{" "}
+                        <Typography
+                          component="span"
+                          sx={{ fontWeight: "bold", color: "primary.main" }}
+                        >
+                          {formatted.percentage}
+                        </Typography>
+                      </>
+                    }
+                  />
+                </ListItem>
+              );
+            })}
           </List>
         </Box>
 
